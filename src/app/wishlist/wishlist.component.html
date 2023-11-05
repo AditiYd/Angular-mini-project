@@ -1,0 +1,8 @@
+<div class="container mt-3 d-flex justify-content-center align-items-center flex-column" *ngFor="let item of wishlistArray">
+    <img src="https://www.artic.edu/iiif/2/{{item?.image_id}}/full/843,/0/default.jpg"
+     style="width:40vh;height:40vh">
+    <h1><b>{{item?.title}}</b></h1>
+    <h3 style="font-family: 'Times New Roman', Times, serif;"><b>{{item?.artist_title}}</b></h3>
+    <h3 style="font-family: 'Times New Roman', Times, serif;">{{item?.artist_display}}</h3>
+    <button (click)="removeFromWishlist(item)" class="btn btn-danger">Remove from Wishlist</button>
+</div>

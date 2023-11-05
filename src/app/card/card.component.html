@@ -1,0 +1,34 @@
+
+<div class="container mt-3">
+  <div class = "navflex">
+  <form class="d-flex" [formGroup]="searchForm" style = "margin-top: 2vw; margin-bottom: 2vw">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" formControlName="searchInput" style="width: 50vh;">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  <a [routerLink]="'/wishlist'" class="btn btn-secondary">Wishlist</a>
+  </div>
+    <div class="row">
+        <div class="col-lg-4 mb-3" *ngFor="let item of cards">
+          <div class="card" style="width: 18rem; box-shadow: 4px 4px 6px 3px rgba(0,0,0,0.2); margin-top: 2vw; height: 28rem">
+            <img src="https://www.artic.edu/iiif/2/{{item?.image_id}}/full/843,/0/default.jpg" class="card-img-top" alt="...." width="150" height="260">
+            <div class="card-body">
+              <h3 class="card-title">{{ item.title | slice : 0 : 18 }}</h3>
+              <p class="card-text">{{ item.artist_title }}</p>
+              <div class="d-flex justify-content-between">
+                <a [routerLink]="['/viewmore', item.id]" class="btn btn-secondary">View More</a>
+                <a class="btn btn-secondary" (click)="addToWishlist(item)">Wishlist</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col">
+        <button class="btn btn-secondary" (click)="goToPreviousPage()" [disabled]="pageNumber === 1">Previous</button>
+      </div>
+      <div class="col text-end">
+        <button class="btn btn-secondary" (click)="goToNextPage()" >Next</button>
+      </div>
+    </div>
+</div>
